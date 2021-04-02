@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{% url 'home'  %}">StockApp</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="{% url 'about'  %}">About</a></li>
+      <li><a href="{% url 'addstock'  %}">Add Stock</a></li>
+    </ul>
+    <ul class="mr-right">
+      <form class="navbar-form navbar-right" action="{% url 'home' %}" method="POST">
+        {% csrf_token %}
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Get Stock Quote" name="stock">
+        <div class="input-group-btn">
+          <button class="btn btn-primary" type="submit">
+            Stock Quotes
+          </button>
+        </div>
+      </div>
+    </form>
+    </ul>
+  </div>
+</nav>
+
+
+{% block content %}
+
+
+{% endblock content %}

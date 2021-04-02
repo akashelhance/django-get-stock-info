@@ -1,0 +1,69 @@
+
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<form class="navbar-form navbar-left" action="{% url 'addstock' %}" method="POST">
+        {% csrf_token %}
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Get Stock Quote" name="stock">
+        <div class="input-group-btn">
+          <button class="btn btn-primary" type="submit">
+            Stock Quotes
+          </button>
+        </div>
+      </div>
+    </form>
+
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li class="text-danger" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+  <br/>  <br/>  <br/>
+  <div class="container">
+       <ul class="list-group">
+         {% for stock in all_stock %}
+  <li class="list-group-item">{{stock}} - <a  href="{% url 'deletestock' stock.id%}" class="btn btn-primary">Delete</a></li>
+  
+     {% endfor %}
+</ul>
+
+</div>
+
+
+<hr>
+
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Symbol</th>
+        <th>primaryExchange</th>
+        <th>week52Low</th>
+        <th>week52High</th>
+          <th>Delete Stock</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+       {% for stock in all_stock %}
+        <td>{{stock}}</td>
+        <td>{{api_data.primaryExchange}}</td>
+        <td>{{api_data.week52Low}}</td>
+        <td>{{api_data.week52High}}</td>
+          <td> <a  href="" class="btn btn-primary">Delete</a></td>
+
+      </tr>
+       {% endfor %}
+  
+    </tbody>
+  </table>
+
+
+{% endblock content %}

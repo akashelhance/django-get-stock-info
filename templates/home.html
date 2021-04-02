@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<div class="container">
+<h3> Company Name -{{api_data.companyName}}</h3>
+<hr>
+<p> Symbol-{{api_data.symbol}}</p>
+<p> primaryExchange -{{api_data.primaryExchange}}</p>
+<p> week52Low -{{api_data.week52Low}}</p>
+
+<p> week52High -{{api_data.week52High}}</p>
+</div>
+
+
+{% endblock content %}
